@@ -73,7 +73,7 @@ def parse_rgb(color: str) -> Tuple[int, int, int]:
     Returns:
         Tuple of (r, g, b) values
     """
-    match = re.match(r'rgb\((\d+),\s*(\d+),\s*(\d+)\)', color)
+    match = re.match(r'rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)', color)
     if match:
         return int(match.group(1)), int(match.group(2)), int(match.group(3))
     return 0, 0, 0
