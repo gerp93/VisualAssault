@@ -42,3 +42,6 @@ htmlcov/
 /tmp/
 *.tmp
 *.log
+
+# Demo files (for local testing only)
+demo.html
