@@ -1,0 +1,201 @@
+body.dark-theme {
+    --color-top-bar-bg: rgb(50, 50, 50);
+    --color-top-bar-hover: rgb(70, 70, 70);
+    --color-text: rgb(255, 255, 255);
+    --color-bg: rgb(34, 34, 34);
+    --color-bg-hover: rgb(54, 54, 54);
+    --color-primary-action: rgb(7, 72, 75);
+    --color-primary-action-hover: rgb(8, 94, 99);
+    --color-accent-green: rgb(120, 255, 99);
+    --color-accent-red: rgb(255, 100, 100);
+    --color-accent-blue: rgb(130, 160, 255);
+}
+
+body.dracula-theme {
+    --color-top-bar-bg: rgb(68, 71, 90);
+    --color-top-bar-hover: rgb(40, 42, 54);
+    --color-text: rgb(248, 248, 242);
+    --color-bg: rgb(40, 42, 54);
+    --color-bg-hover: rgb(68, 71, 90);
+    --color-primary-action: rgb(98, 114, 164);
+    --color-primary-action-hover: rgb(112, 131, 189);
+    --color-accent-green: rgb(80, 250, 123);
+    --color-accent-red: rgb(255, 85, 85);
+    --color-accent-blue: rgb(139, 233, 253);
+}
+
+body.gruvbox-dark-theme {
+    --color-top-bar-bg: rgb(50, 50, 50);
+    --color-top-bar-hover: rgb(70, 70, 70);
+    --color-text: rgb(235, 219, 178);
+    --color-bg: rgb(40, 40, 40);
+    --color-bg-hover: rgb(60, 56, 54);
+    --color-primary-action: rgb(80, 73, 69);
+    --color-primary-action-hover: rgb(102, 92, 84);
+    --color-accent-green: rgb(152, 151, 26);
+    --color-accent-red: rgb(204, 36, 29);
+    --color-accent-blue: rgb(69, 133, 136);
+}
+
+body.gruvbox-light-theme {
+    --color-top-bar-bg: rgb(204, 195, 162);
+    --color-top-bar-hover: rgb(184, 175, 142);
+    --color-text: rgb(60, 56, 54);
+    --color-bg: rgb(251, 241, 199);
+    --color-bg-hover: rgb(235, 219, 178);
+    --color-primary-action: rgb(213, 196, 161);
+    --color-primary-action-hover: rgb(189, 174, 147);
+    --color-accent-green: rgb(152, 151, 26);
+    --color-accent-red: rgb(204, 36, 29);
+    --color-accent-blue: rgb(69, 133, 136);
+}
+
+body.light-theme {
+    --color-top-bar-bg: rgb(200, 200, 200);
+    --color-top-bar-hover: rgb(180, 180, 180);
+    --color-text: rgb(0, 0, 0);
+    --color-bg: rgb(245, 245, 245);
+    --color-bg-hover: rgb(234, 234, 234);
+    --color-primary-action: rgb(215, 254, 255);
+    --color-primary-action-hover: rgb(182, 224, 225);
+    --color-accent-green: rgb(20, 150, 0);
+    --color-accent-red: rgb(157, 0, 0);
+    --color-accent-blue: rgb(0, 50, 200);
+}
+
+body.nord-polar-night-theme {
+    --color-top-bar-bg: rgb(46, 52, 64);
+    --color-top-bar-hover: rgb(59, 66, 82);
+    --color-text: rgb(216, 222, 233);
+    --color-bg: rgb(59, 66, 82);
+    --color-bg-hover: rgb(67, 76, 94);
+    --color-primary-action: rgb(94, 129, 172);
+    --color-primary-action-hover: rgb(129, 161, 193);
+    --color-accent-green: rgb(163, 190, 140);
+    --color-accent-red: rgb(191, 97, 106);
+    --color-accent-blue: rgb(94, 129, 172);
+}
+
+body.purple-theme {
+    --color-top-bar-bg: rgb(30, 30, 63);
+    --color-top-bar-hover: rgb(45, 43, 85);
+    --color-text: rgb(165, 153, 233);
+    --color-bg: rgb(45, 43, 85);
+    --color-bg-hover: rgb(77, 33, 252);
+    --color-primary-action: rgb(52, 35, 120);
+    --color-primary-action-hover: rgb(68, 46, 156);
+    --color-accent-green: rgb(58, 217, 0);
+    --color-accent-red: rgb(255, 98, 140);
+    --color-accent-blue: rgb(179, 98, 255);
+}
+
+body.tokyo-night-dark-theme {
+    --color-top-bar-bg: rgb(17, 18, 26);
+    --color-top-bar-hover: rgb(37, 38, 46);
+    --color-text: rgb(169, 177, 214);
+    --color-bg: rgb(26, 27, 38);
+    --color-bg-hover: rgb(36, 40, 59);
+    --color-primary-action: rgb(65, 72, 104);
+    --color-primary-action-hover: rgb(86, 95, 137);
+    --color-accent-green: rgb(158, 206, 106);
+    --color-accent-red: rgb(247, 118, 142);
+    --color-accent-blue: rgb(42, 195, 222);
+}
+
+body {
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+#top-bar {
+    background-color: var(--color-top-bar-bg);
+}
+
+#top-bar-menu {
+    background-color: var(--color-top-bar-bg);
+}
+
+#top-bar-menu .top-bar-menu-link:hover {
+    background-color: var(--color-top-bar-hover);
+}
+
+a {
+    color: var(--color-accent-blue);
+}
+
+dialog {
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+button {
+    color: var(--color-text);
+    background-color: var(--color-primary-action);
+}
+
+button:hover {
+    color: var(--color-text);
+    background-color: var(--color-primary-action-hover);
+}
+
+input {
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+input[type="submit"] {
+    color: var(--color-text);
+    background-color: var(--color-primary-action);
+}
+
+input[type="submit"]:hover {
+    color: var(--color-text);
+    background-color: var(--color-primary-action-hover);
+}
+
+textarea {
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+select {
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+tbody>tr:hover {
+    background-color: var(--color-bg-hover);
+}
+
+.lobby-chat-message-green {
+    color: var(--color-accent-green);
+}
+
+.lobby-chat-message-red {
+    color: var(--color-accent-red);
+}
+
+.lobby-chat-message-blue {
+    color: var(--color-accent-blue);
+}
+
+.danger-zone {
+    border-color: var(--color-accent-red);
+    background-color: var(--color-bg-hover);
+}
+
+.danger-zone-summary {
+    color: var(--color-accent-red);
+}
+
+.htmx-result-good {
+    color: var(--color-accent-green);
+}
+
+.htmx-result-bad {
+    color: var(--color-accent-red);
+}
+
+#lobby-grid-container>div {
+    background-color: var(--color-bg);
+}

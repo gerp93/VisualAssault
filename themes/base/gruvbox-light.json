@@ -1,0 +1,26 @@
+{
+  "id": "gruvbox-light",
+  "name": "Gruvbox Light",
+  "displayName": "🟡 Gruvbox Light",
+  "description": "Gruvbox light theme with warm earth tones",
+  "category": "base",
+  "colors": {
+    "topBarBg": "rgb(204, 195, 162)",
+    "topBarHover": "rgb(184, 175, 142)",
+    "text": "rgb(60, 56, 54)",
+    "bg": "rgb(251, 241, 199)",
+    "bgHover": "rgb(235, 219, 178)",
+    "primaryAction": "rgb(213, 196, 161)",
+    "primaryActionHover": "rgb(189, 174, 147)",
+    "primaryActionText": null,
+    "accentGreen": "rgb(152, 151, 26)",
+    "accentRed": "rgb(204, 36, 29)",
+    "accentBlue": "rgb(69, 133, 136)"
+  },
+  "metadata": {
+    "inspiration": "Gruvbox color palette",
+    "author": "Grantford Barnes",
+    "createdAt": "2025-12-07",
+    "wcagAACompliant": true
+  }
+}

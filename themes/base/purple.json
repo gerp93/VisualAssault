@@ -1,0 +1,26 @@
+{
+  "id": "purple",
+  "name": "Purple",
+  "displayName": "💜 Purple",
+  "description": "Rich purple theme with vibrant accents",
+  "category": "base",
+  "colors": {
+    "topBarBg": "rgb(30, 30, 63)",
+    "topBarHover": "rgb(45, 43, 85)",
+    "text": "rgb(165, 153, 233)",
+    "bg": "rgb(45, 43, 85)",
+    "bgHover": "rgb(77, 33, 252)",
+    "primaryAction": "rgb(52, 35, 120)",
+    "primaryActionHover": "rgb(68, 46, 156)",
+    "primaryActionText": null,
+    "accentGreen": "rgb(58, 217, 0)",
+    "accentRed": "rgb(255, 98, 140)",
+    "accentBlue": "rgb(179, 98, 255)"
+  },
+  "metadata": {
+    "inspiration": "Purple color scheme",
+    "author": "Grantford Barnes",
+    "createdAt": "2025-12-07",
+    "wcagAACompliant": false
+  }
+}

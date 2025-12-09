@@ -1,0 +1,36 @@
+name: Generate Themes
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'themes/**'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    
+    - name: Generate all themes
+      run: |
+        python generators/generate_all.py
+    
+    - name: Commit generated files
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add output/
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-generate theme outputs" && git push)

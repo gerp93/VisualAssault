@@ -1,0 +1,26 @@
+{
+  "id": "gruvbox-dark",
+  "name": "Gruvbox Dark",
+  "displayName": "🟤 Gruvbox Dark",
+  "description": "Gruvbox dark theme with warm earth tones",
+  "category": "base",
+  "colors": {
+    "topBarBg": "rgb(50, 50, 50)",
+    "topBarHover": "rgb(70, 70, 70)",
+    "text": "rgb(235, 219, 178)",
+    "bg": "rgb(40, 40, 40)",
+    "bgHover": "rgb(60, 56, 54)",
+    "primaryAction": "rgb(80, 73, 69)",
+    "primaryActionHover": "rgb(102, 92, 84)",
+    "primaryActionText": null,
+    "accentGreen": "rgb(152, 151, 26)",
+    "accentRed": "rgb(204, 36, 29)",
+    "accentBlue": "rgb(69, 133, 136)"
+  },
+  "metadata": {
+    "inspiration": "Gruvbox color palette",
+    "author": "Grantford Barnes",
+    "createdAt": "2025-12-07",
+    "wcagAACompliant": true
+  }
+}
