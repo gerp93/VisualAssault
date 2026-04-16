@@ -1,0 +1,26 @@
+{
+  "id": "blue-oval",
+  "name": "Blue Oval",
+  "displayName": "Blue Oval",
+  "description": "Blue Oval theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(13, 71, 161)",
+    "topBarHover": "rgb(25, 100, 200)",
+    "text": "rgb(255, 255, 255)",
+    "bg": "rgb(13, 71, 161)",
+    "bgHover": "rgb(10, 55, 130)",
+    "primaryAction": "rgb(70, 80, 90)",
+    "primaryActionHover": "rgb(90, 100, 110)",
+    "accentGreen": "rgb(200, 210, 220)",
+    "accentRed": "rgb(255, 150, 150)",
+    "accentBlue": "rgb(150, 200, 255)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lava",
+  "name": "Lava",
+  "displayName": "Lava",
+  "description": "Lava theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(51, 0, 0)",
+    "topBarHover": "rgb(77, 0, 0)",
+    "text": "rgb(255, 255, 255)",
+    "bg": "rgb(204, 0, 0)",
+    "bgHover": "rgb(26, 0, 0)",
+    "primaryAction": "rgb(51, 0, 0)",
+    "primaryActionHover": "rgb(102, 0, 0)",
+    "accentGreen": "rgb(255, 204, 0)",
+    "accentRed": "rgb(255, 51, 0)",
+    "accentBlue": "rgb(255, 102, 0)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

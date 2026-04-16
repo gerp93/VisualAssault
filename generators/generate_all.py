@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from generators.generate_css import generate_css
+from generators.generate_tkinter import generate_tkinter
 
 
 def generate_all():
@@ -21,9 +22,8 @@ def generate_all():
     css_output = repo_root / 'output' / 'css' / 'colors.css'
     generate_css(themes_dir, css_output)
     
-    # Future generators will be added here:
-    # print("\n🐍 Generating Tkinter themes...")
-    # generate_tkinter(themes_dir, repo_root / 'output' / 'tkinter')
+    print("\n🐍 Generating Tkinter themes...")
+    generate_tkinter(themes_dir, repo_root / 'output' / 'tkinter')
     
     # print("\n✈️ Generating Flet themes...")
     # generate_flet(themes_dir, repo_root / 'output' / 'flet')

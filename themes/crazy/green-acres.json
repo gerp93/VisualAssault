@@ -1,0 +1,26 @@
+{
+  "id": "green-acres",
+  "name": "Green Acres",
+  "displayName": "Green Acres",
+  "description": "Green Acres theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(54, 124, 43)",
+    "topBarHover": "rgb(70, 150, 55)",
+    "text": "rgb(255, 222, 0)",
+    "bg": "rgb(54, 124, 43)",
+    "bgHover": "rgb(40, 100, 30)",
+    "primaryAction": "rgb(30, 70, 25)",
+    "primaryActionHover": "rgb(40, 90, 32)",
+    "accentGreen": "rgb(255, 222, 0)",
+    "accentRed": "rgb(255, 180, 0)",
+    "accentBlue": "rgb(200, 255, 150)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

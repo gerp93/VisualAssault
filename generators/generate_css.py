@@ -1,5 +1,4 @@
 """Generate CSS themes from JSON theme definitions."""
-import json
 from pathlib import Path
 from typing import List
 from src.theme import Theme
@@ -169,6 +168,14 @@ tbody>tr:hover {
 
 .lobby-chat-message-blue {
     color: var(--color-accent-blue);
+}
+
+progress {
+    accent-color: var(--color-accent-red);
+}
+
+progress.progress-full {
+    accent-color: var(--color-accent-green);
 }
 
 .danger-zone {

@@ -1,0 +1,26 @@
+{
+  "id": "bubblegum",
+  "name": "Bubblegum",
+  "displayName": "Bubblegum",
+  "description": "Bubblegum theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(204, 0, 102)",
+    "topBarHover": "rgb(170, 40, 170)",
+    "text": "rgb(255, 255, 255)",
+    "bg": "rgb(255, 105, 180)",
+    "bgHover": "rgb(255, 182, 193)",
+    "primaryAction": "rgb(153, 50, 204)",
+    "primaryActionHover": "rgb(187, 51, 187)",
+    "accentGreen": "rgb(255, 255, 0)",
+    "accentRed": "rgb(204, 0, 102)",
+    "accentBlue": "rgb(135, 206, 235)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

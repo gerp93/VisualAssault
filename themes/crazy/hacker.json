@@ -1,0 +1,26 @@
+{
+  "id": "hacker",
+  "name": "Hacker",
+  "displayName": "Hacker",
+  "description": "Hacker theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(0, 26, 0)",
+    "topBarHover": "rgb(0, 51, 0)",
+    "text": "rgb(0, 255, 0)",
+    "bg": "rgb(13, 13, 13)",
+    "bgHover": "rgb(0, 17, 0)",
+    "primaryAction": "rgb(0, 26, 0)",
+    "primaryActionHover": "rgb(0, 51, 0)",
+    "accentGreen": "rgb(0, 255, 65)",
+    "accentRed": "rgb(255, 191, 0)",
+    "accentBlue": "rgb(50, 205, 50)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

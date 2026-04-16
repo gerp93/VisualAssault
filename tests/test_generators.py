@@ -1,11 +1,13 @@
 """Tests for CSS generator."""
 import sys
 from pathlib import Path
+import json
 
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from generators.generate_css import generate_css
+from generators.generate_tkinter import generate_tkinter
 
 
 def test_css_generation():
@@ -27,11 +29,15 @@ def test_css_generation():
         content = f.read()
     
     # Check that all expected themes are present
-    expected_themes = [
-        'dark-theme', 'light-theme', 'nord-polar-night-theme',
-        'dracula-theme', 'purple-theme', 'tokyo-night-dark-theme',
-        'gruvbox-dark-theme', 'gruvbox-light-theme'
-    ]
+    expected_themes = []
+    themes_root = repo_root / 'themes'
+    for subdir in ['base', 'crazy']:
+        subdir_path = themes_root / subdir
+        if not subdir_path.exists():
+            continue
+        for json_file in sorted(subdir_path.glob('*.json')):
+            theme_id = json.loads(json_file.read_text())['id']
+            expected_themes.append(f'{theme_id}-theme')
     
     missing_themes = []
     for theme in expected_themes:
@@ -64,10 +70,52 @@ def test_css_generation():
     return True
 
 
+def test_tkinter_generation():
+    """Test that Tkinter theme output is generated correctly."""
+    repo_root = Path(__file__).parent.parent
+    themes_dir = repo_root / 'themes'
+    output_dir = repo_root / 'output' / 'tkinter'
+    output_file = output_dir / 'themes.json'
+
+    print("Generating Tkinter themes...")
+    generate_tkinter(themes_dir, output_dir)
+
+    if not output_file.exists():
+        print("❌ Tkinter themes.json was not generated")
+        return False
+
+    payload = json.loads(output_file.read_text())
+    if 'themes' not in payload:
+        print("❌ Tkinter themes.json missing 'themes' key")
+        return False
+
+    theme_count = len(payload['themes'])
+    if theme_count == 0:
+        print("❌ Tkinter themes.json has no themes")
+        return False
+
+    required_keys = [
+        'background', 'foreground', 'buttonBackground', 'buttonHover',
+        'accentGreen', 'accentRed', 'accentBlue', 'tkinterId'
+    ]
+    first_theme = next(iter(payload['themes'].values()))
+    missing_keys = [k for k in required_keys if k not in first_theme]
+    if missing_keys:
+        print(f"❌ Tkinter theme entries missing keys: {', '.join(missing_keys)}")
+        return False
+
+    print("✅ Tkinter generation successful!")
+    print(f"   - Generated {theme_count} themes")
+    print(f"   - Output: {output_file}")
+    return True
+
+
 if __name__ == '__main__':
     print("=" * 50)
     print("Testing CSS Generator")
     print("=" * 50)
     
-    if not test_css_generation():
+    css_ok = test_css_generation()
+    tkinter_ok = test_tkinter_generation()
+    if not css_ok or not tkinter_ok:
         sys.exit(1)
