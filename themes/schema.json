@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Visual Assault Theme Schema",
+  "description": "JSON schema for Visual Assault theme definitions",
+  "type": "object",
+  "required": ["id", "name", "displayName", "category", "colors"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique theme identifier (kebab-case)",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable theme name"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name with optional emoji"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the theme"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["base", "crazy"],
+      "description": "Theme category"
+    },
+    "colors": {
+      "type": "object",
+      "required": [
+        "topBarBg",
+        "topBarHover",
+        "text",
+        "bg",
+        "bgHover",
+        "primaryAction",
+        "primaryActionHover",
+        "accentGreen",
+        "accentRed",
+        "accentBlue"
+      ],
+      "properties": {
+        "topBarBg": {
+          "type": "string",
+          "description": "Top bar background color"
+        },
+        "topBarHover": {
+          "type": "string",
+          "description": "Top bar hover color"
+        },
+        "text": {
+          "type": "string",
+          "description": "Primary text color"
+        },
+        "bg": {
+          "type": "string",
+          "description": "Background color"
+        },
+        "bgHover": {
+          "type": "string",
+          "description": "Background hover color"
+        },
+        "primaryAction": {
+          "type": "string",
+          "description": "Primary action button color"
+        },
+        "primaryActionHover": {
+          "type": "string",
+          "description": "Primary action button hover color"
+        },
+        "primaryActionText": {
+          "type": ["string", "null"],
+          "description": "Primary action button text color (optional, uses text color if null)"
+        },
+        "accentGreen": {
+          "type": "string",
+          "description": "Green accent color"
+        },
+        "accentRed": {
+          "type": "string",
+          "description": "Red accent color"
+        },
+        "accentBlue": {
+          "type": "string",
+          "description": "Blue accent color"
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "description": "Primary font family"
+        },
+        "fontFamilyMono": {
+          "type": "string",
+          "description": "Monospace font family"
+        },
+        "fontSizeBase": {
+          "type": "string",
+          "description": "Base font size"
+        },
+        "fontWeightNormal": {
+          "type": "integer",
+          "description": "Normal font weight"
+        },
+        "fontWeightBold": {
+          "type": "integer",
+          "description": "Bold font weight"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "inspiration": {
+          "type": "string",
+          "description": "Source of inspiration for the theme"
+        },
+        "author": {
+          "type": "string",
+          "description": "Theme author"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date",
+          "description": "Creation date (YYYY-MM-DD)"
+        },
+        "wcagAACompliant": {
+          "type": "boolean",
+          "description": "Whether theme meets WCAG AA contrast requirements"
+        }
+      }
+    }
+  }
+}

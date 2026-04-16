@@ -1,0 +1,26 @@
+{
+  "id": "electric-lime",
+  "name": "Electric Lime",
+  "displayName": "Electric Lime",
+  "description": "Electric Lime theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(136, 170, 0)",
+    "topBarHover": "rgb(74, 0, 128)",
+    "text": "rgb(10, 10, 10)",
+    "bg": "rgb(204, 255, 0)",
+    "bgHover": "rgb(238, 255, 170)",
+    "primaryAction": "rgb(74, 0, 128)",
+    "primaryActionHover": "rgb(119, 0, 255)",
+    "accentGreen": "rgb(136, 170, 0)",
+    "accentRed": "rgb(255, 0, 170)",
+    "accentBlue": "rgb(0, 102, 255)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

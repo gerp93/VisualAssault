@@ -1,0 +1,7 @@
+# Visual Assault Theme System Requirements
+# Currently no external dependencies required
+# Python 3.7+ standard library is sufficient
+
+# Future dependencies may include:
+# jsonschema>=4.0.0  # For JSON schema validation
+# pyyaml>=6.0        # For YAML theme support

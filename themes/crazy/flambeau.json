@@ -1,0 +1,26 @@
+{
+  "id": "flambeau",
+  "name": "Flambeau",
+  "displayName": "Flambeau",
+  "description": "Flambeau theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(195, 46, 11)",
+    "topBarHover": "rgb(220, 70, 30)",
+    "text": "rgb(0, 0, 0)",
+    "bg": "rgb(255, 189, 123)",
+    "bgHover": "rgb(195, 170, 140)",
+    "primaryAction": "rgb(195, 46, 11)",
+    "primaryActionHover": "rgb(220, 70, 30)",
+    "accentGreen": "rgb(0, 100, 0)",
+    "accentRed": "rgb(195, 46, 11)",
+    "accentBlue": "rgb(100, 60, 20)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

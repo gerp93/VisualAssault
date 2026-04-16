@@ -1,0 +1,26 @@
+{
+  "id": "hawkeye",
+  "name": "Hawkeye",
+  "displayName": "Hawkeye",
+  "description": "Hawkeye theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(0, 0, 0)",
+    "topBarHover": "rgb(40, 40, 0)",
+    "text": "rgb(255, 205, 0)",
+    "bg": "rgb(0, 0, 0)",
+    "bgHover": "rgb(30, 25, 0)",
+    "primaryAction": "rgb(40, 40, 40)",
+    "primaryActionHover": "rgb(60, 60, 60)",
+    "accentGreen": "rgb(255, 205, 0)",
+    "accentRed": "rgb(255, 150, 0)",
+    "accentBlue": "rgb(255, 230, 100)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

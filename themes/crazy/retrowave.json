@@ -1,0 +1,26 @@
+{
+  "id": "retrowave",
+  "name": "Retrowave",
+  "displayName": "Retrowave",
+  "description": "Retrowave theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(45, 27, 78)",
+    "topBarHover": "rgb(74, 44, 122)",
+    "text": "rgb(255, 107, 157)",
+    "bg": "rgb(26, 10, 46)",
+    "bgHover": "rgb(61, 31, 92)",
+    "primaryAction": "rgb(61, 31, 92)",
+    "primaryActionHover": "rgb(92, 45, 138)",
+    "accentGreen": "rgb(255, 217, 61)",
+    "accentRed": "rgb(224, 64, 251)",
+    "accentBlue": "rgb(199, 125, 255)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

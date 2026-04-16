@@ -1,0 +1,26 @@
+{
+  "id": "red-barn",
+  "name": "Red Barn",
+  "displayName": "Red Barn",
+  "description": "Red Barn theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(198, 12, 48)",
+    "topBarHover": "rgb(230, 40, 70)",
+    "text": "rgb(255, 255, 255)",
+    "bg": "rgb(198, 12, 48)",
+    "bgHover": "rgb(160, 10, 35)",
+    "primaryAction": "rgb(0, 0, 0)",
+    "primaryActionHover": "rgb(40, 40, 40)",
+    "accentGreen": "rgb(255, 220, 100)",
+    "accentRed": "rgb(255, 255, 255)",
+    "accentBlue": "rgb(255, 180, 180)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

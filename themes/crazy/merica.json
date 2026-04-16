@@ -1,0 +1,26 @@
+{
+  "id": "merica",
+  "name": "Merica",
+  "displayName": "Merica",
+  "description": "Merica theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(191, 10, 48)",
+    "topBarHover": "rgb(220, 40, 70)",
+    "text": "rgb(255, 255, 255)",
+    "bg": "rgb(0, 40, 104)",
+    "bgHover": "rgb(0, 30, 80)",
+    "primaryAction": "rgb(191, 10, 48)",
+    "primaryActionHover": "rgb(220, 40, 70)",
+    "accentGreen": "rgb(255, 255, 255)",
+    "accentRed": "rgb(191, 10, 48)",
+    "accentBlue": "rgb(100, 180, 255)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

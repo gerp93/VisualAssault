@@ -1,0 +1,26 @@
+{
+  "id": "commander-keen",
+  "name": "Commander Keen",
+  "displayName": "Commander Keen",
+  "description": "Commander Keen theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(85, 85, 255)",
+    "topBarHover": "rgb(85, 255, 255)",
+    "text": "rgb(255, 255, 85)",
+    "bg": "rgb(0, 0, 170)",
+    "bgHover": "rgb(0, 0, 0)",
+    "primaryAction": "rgb(85, 85, 255)",
+    "primaryActionHover": "rgb(0, 170, 170)",
+    "accentGreen": "rgb(85, 255, 85)",
+    "accentRed": "rgb(170, 0, 170)",
+    "accentBlue": "rgb(85, 255, 255)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}

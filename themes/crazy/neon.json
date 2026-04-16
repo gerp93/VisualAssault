@@ -1,0 +1,26 @@
+{
+  "id": "neon",
+  "name": "Neon",
+  "displayName": "Neon",
+  "description": "Neon theme",
+  "category": "crazy",
+  "colors": {
+    "topBarBg": "rgb(26, 0, 51)",
+    "topBarHover": "rgb(51, 0, 102)",
+    "text": "rgb(0, 255, 255)",
+    "bg": "rgb(10, 10, 10)",
+    "bgHover": "rgb(13, 13, 26)",
+    "primaryAction": "rgb(51, 0, 51)",
+    "primaryActionHover": "rgb(102, 0, 102)",
+    "accentGreen": "rgb(57, 255, 20)",
+    "accentRed": "rgb(255, 20, 147)",
+    "accentBlue": "rgb(125, 249, 255)",
+    "primaryActionText": null
+  },
+  "metadata": {
+    "inspiration": "card-judge theme set",
+    "author": "Grantford Barnes",
+    "createdAt": "2026-04-16",
+    "wcagAACompliant": false
+  }
+}
