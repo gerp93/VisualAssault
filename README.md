@@ -1,14 +1,20 @@
 # Visual Assault
 
-A library of bold, loud, cross-framework theme palettes — defined once in
-Markdown, applied to your app by your own AI coding assistant. No package to
-install, no per-framework generator to maintain.
+Your app looks fine. That's the problem.
+
+Visual Assault is a library of loud, deliberately eye-searing color themes —
+neon, clashing, borderline-illegal-looking palettes for whatever you're
+building. Still readable. Just aggressively not calm.
+
+No package to install. No SDK, no CLI, nothing to `npm install`. You just
+tell your AI coding assistant which theme you want, and it builds the file
+for your framework.
 
 ## Quick Start
 
-Copy the block below into your AI coding assistant (Claude Code, Cursor,
-Copilot Chat, etc.) from inside your app's repo, filling in a theme name from
-the list below:
+Copy this into your AI coding assistant (Claude Code, Cursor, Copilot Chat,
+whatever) from inside your app's repo, and swap in a theme name from the
+list below:
 
 ```
 Fetch https://raw.githubusercontent.com/gerp93/VisualAssault/main/themes/THEMES.md
@@ -19,46 +25,11 @@ values exactly. Do not rewire existing components to use it unless I ask
 separately.
 ```
 
-If your assistant can't fetch URLs, open `themes/THEMES.md` yourself, copy
-just the one theme's section, and paste it in after "apply the following
-theme to this app:" instead.
+Can't fetch URLs? Open `themes/THEMES.md`, copy the one theme's section you
+want, and paste it in instead. Either way, that's it — you now have an
+unreasonably loud theme file.
 
-That's it — there's nothing to `npm install` or `pip install`. For the fuller
-version of this prompt (with more detail on scope/behavior), see
-[`prompts/apply-theme.md`](prompts/apply-theme.md). Updating a theme you've
-already applied is a separate, smaller ask — see
-[`prompts/update-theme.md`](prompts/update-theme.md).
-
-## How this works
-
-- **`themes/THEMES.md`** is the single source of truth for every theme's
-  exact color values — no JSON, no schema, no build step behind it.
-- **`prompts/`** holds the instructions consumers give their AI assistant to
-  apply or update a theme in their own app.
-- **`examples/reference/`** holds illustrative (non-authoritative) example
-  output from an earlier prototype — useful for naming-convention ideas, not
-  a source of truth.
-
-An AI assistant reads a theme's token values from `themes/THEMES.md` and
-produces exactly one native artifact for whatever styling mechanism your app
-already uses — a CSS file with custom properties, a Tailwind config
-fragment, a JS theme object, a Tkinter style dict, a Qt stylesheet, and so
-on. It doesn't rewire your components to consume that file — that's a
-separate, explicit step you ask for if and when you want it.
-
-## Design philosophy
-
-These themes are **not** meant to be unreadable or low-contrast — text stays
-legible against its background in every theme here. What makes a theme
-"visual assault" is the *nature and combination* of the colors themselves:
-bright neons, harsh or clashing hues, jarring pairings that are perfectly
-readable but hard to stare at for long. Not every theme has to be abrasive,
-either — a few lean more "striking" than "harsh," and that's expected.
-
-See `themes/THEMES.md` for the full philosophy and every theme's exact
-values.
-
-## Available themes (14)
+## Pick your poison (14 themes)
 
 | Theme | Vibe |
 |---|---|
@@ -77,9 +48,13 @@ values.
 | Red Barn | Barn red with bright accents |
 | Retrowave | 80s synthwave palette |
 
-## Contributing a new theme
+Full color values for every theme live in [`themes/THEMES.md`](themes/THEMES.md).
 
-Add a new section to `themes/THEMES.md` following the existing format: a
-name, a short description, and a fenced block with every token from the
-[Token reference](themes/THEMES.md#token-reference) filled in as an exact
-`rgb(r, g, b)` value.
+## The fine print
+
+These themes stay readable — good contrast is non-negotiable. The "assault"
+part is the colors themselves, not broken legibility. We're not trying to
+make your app unusable, just deeply unpleasant to look at (in a good way).
+
+Want to know how this actually works under the hood, how updates work, or
+how to contribute a new theme? See [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md).
