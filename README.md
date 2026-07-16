@@ -1,5 +1,3 @@
-# Visual Assault
-
 ![Visual Assault](assets/logo.svg)
 
 Your app looks fine. That's the problem.
