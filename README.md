@@ -2,19 +2,14 @@
 
 Your app looks fine. That's the problem.
 
-Visual Assault is a library of loud, deliberately eye-searing color themes —
-neon, clashing, borderline-illegal-looking palettes for whatever you're
-building. Still readable. Just aggressively not calm.
+Visual Assault is a vibe-coded theme library for vibe coders — loud,
+deliberately eye-searing color themes: neon, clashing, borderline-illegal-
+looking palettes for whatever you're building. Still readable. Just
+aggressively not calm.
 
 No package to install. No SDK, no CLI, nothing to `npm install`. You just
 tell your AI coding assistant which theme you want, and it builds the file
 for your framework.
-
-This is also, in the interest of full transparency, a "pseudo-package"
-because it was natively vibe coded into existence — nobody sat down and
-architected a plugin system, we just kept asking an AI for "loud colors,
-please" until a repo fell out. Turns out that's a perfectly good way to ship
-a theme library. Who knew.
 
 ## Quick Start
 
@@ -62,7 +57,6 @@ These themes stay readable — good contrast is non-negotiable. The "assault"
 part is the colors themselves, not broken legibility. We're not trying to
 make your app unusable, just deeply unpleasant to look at (in a good way).
 
-Want to know how this actually works under the hood? Honestly, we don't
-either — it was vibe coded. But if you want to dig into the architecture,
-how updates work, or how to contribute a new theme anyway, the documentation
-is at [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md).
+Want to know how this actually works under the hood? We don't either. But
+if you want to find out, the machines were kind enough to write it all down:
+[`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md).
