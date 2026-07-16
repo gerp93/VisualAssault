@@ -6,11 +6,9 @@ Visual Assault is a library of loud, deliberately eye-searing color themes —
 neon, clashing, borderline-illegal-looking palettes for whatever you're
 building. Still readable. Just aggressively not calm.
 
-No package to install. No SDK, no CLI, nothing to `npm install`. You just
-tell your AI coding assistant which theme you want, and it builds the file
-for your framework.
-
-We vibe coded it and now you can vibe install it.
+No package to install. No SDK, no CLI, nothing to `npm install`. We vibe
+coded it and now you can vibe install it. You just tell your AI coding
+assistant which theme you want, and it builds the file for your framework.
 
 ## Quick Start
 
