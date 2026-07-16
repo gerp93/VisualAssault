@@ -10,6 +10,12 @@ No package to install. No SDK, no CLI, nothing to `npm install`. You just
 tell your AI coding assistant which theme you want, and it builds the file
 for your framework.
 
+This is also, in the interest of full transparency, a "pseudo-package"
+because it was natively vibe coded into existence — nobody sat down and
+architected a plugin system, we just kept asking an AI for "loud colors,
+please" until a repo fell out. Turns out that's a perfectly good way to ship
+a theme library. Who knew.
+
 ## Quick Start
 
 Copy this into your AI coding assistant (Claude Code, Cursor, Copilot Chat,
@@ -56,5 +62,7 @@ These themes stay readable — good contrast is non-negotiable. The "assault"
 part is the colors themselves, not broken legibility. We're not trying to
 make your app unusable, just deeply unpleasant to look at (in a good way).
 
-Want to know how this actually works under the hood, how updates work, or
-how to contribute a new theme? See [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md).
+Want to know how this actually works under the hood? Honestly, we don't
+either — it was vibe coded. But if you want to dig into the architecture,
+how updates work, or how to contribute a new theme anyway, the documentation
+is at [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md).
