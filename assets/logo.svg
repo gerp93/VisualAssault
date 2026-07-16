@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" width="900" height="240" role="img" aria-label="Visual Assault">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0A0A"/>
+      <stop offset="55%" stop-color="#1A0A2E"/>
+      <stop offset="100%" stop-color="#330033"/>
+    </linearGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix in="noise" type="matrix"
+        values="0 0 0 0 1
+                0 0 0 0 1
+                0 0 0 0 1
+                0 0 0 0.04 0"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="240" fill="url(#bgGrad)"/>
+  <rect width="900" height="240" filter="url(#noise)"/>
+
+  <!-- clashing accent bars -->
+  <rect x="0" y="0" width="900" height="10" fill="#39FF14"/>
+  <rect x="0" y="230" width="900" height="10" fill="#FF69B4"/>
+  <rect x="0" y="0" width="14" height="240" fill="#CCFF00"/>
+  <rect x="886" y="0" width="14" height="240" fill="#00FF41"/>
+
+  <!-- glitch offset copies -->
+  <text x="450" y="120" text-anchor="middle"
+        font-family="'Courier New', monospace" font-weight="700" font-size="72"
+        fill="#FF00AA" opacity="0.65" transform="translate(-6,-4)">VISUAL ASSAULT</text>
+  <text x="450" y="120" text-anchor="middle"
+        font-family="'Courier New', monospace" font-weight="700" font-size="72"
+        fill="#00FFFF" opacity="0.55" transform="translate(6,4)">VISUAL ASSAULT</text>
+
+  <!-- main wordmark -->
+  <text x="450" y="120" text-anchor="middle"
+        font-family="'Courier New', monospace" font-weight="700" font-size="72"
+        fill="#FFDE00" stroke="#000000" stroke-width="2">VISUAL ASSAULT</text>
+
+  <!-- tagline -->
+  <text x="450" y="170" text-anchor="middle"
+        font-family="'Courier New', monospace" font-weight="700" font-size="22"
+        letter-spacing="3" fill="#39FF14">THEMES THAT HURT (IN A GOOD WAY)</text>
+</svg>

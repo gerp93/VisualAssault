@@ -1,5 +1,7 @@
 # Visual Assault
 
+![Visual Assault](assets/logo.svg)
+
 Your app looks fine. That's the problem.
 
 Visual Assault is a library of loud, deliberately eye-searing color themes —
