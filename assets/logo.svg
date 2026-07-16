@@ -39,6 +39,6 @@
 
   <!-- tagline -->
   <text x="450" y="170" text-anchor="middle"
-        font-family="'Courier New', monospace" font-weight="700" font-size="22"
-        letter-spacing="3" fill="#39FF14">THEMES THAT HURT (IN A GOOD WAY)</text>
+        font-family="'Courier New', monospace" font-weight="700" font-size="21"
+        letter-spacing="2" fill="#39FF14">YOUR APP LOOKS FINE. THAT'S THE PROBLEM.</text>
 </svg>
