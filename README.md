@@ -71,11 +71,11 @@ Full color values for every theme live in [`themes/THEMES.md`](themes/THEMES.md)
 
 ## Okay fine, real packages too
 
-For four frameworks we actually bothered to own — **CSS**, **Tkinter**,
-**Flet**, and **Angular** (yes, that includes Angular apps wrapped in
-Electron/Tauri as a desktop app) — there are real, install-the-normal-way
-packages, deterministically built from `themes/THEMES.md`, no AI required
-at the point you use them:
+For four frameworks we actually bothered to build for — **CSS**,
+**Tkinter**, **Flet**, and **Angular** (yes, that includes Angular apps
+wrapped in Electron/Tauri as a desktop app) — there are real,
+install-the-normal-way packages, deterministically built from
+`themes/THEMES.md`, no AI required at the point you use them:
 [`packages/css`](packages/css), [`packages/tkinter`](packages/tkinter),
 [`packages/flet`](packages/flet), [`packages/angular`](packages/angular).
 
