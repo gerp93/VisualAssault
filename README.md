@@ -23,6 +23,12 @@ No package to install. No SDK, no CLI, nothing to `npm install`. We vibe
 coded it and now you can vibe install it. You just tell your AI coding
 assistant which theme you want, and it builds the file for your framework.
 
+**How do I keep my app updated with the latest version of the library?**
+You don't, really — there's no version to be behind on, just a markdown
+file that occasionally changes. If a theme you already applied gets
+tweaked upstream, hand your AI assistant the diff and tell it to patch only
+what changed. Full ritual in [`prompts/update-theme.md`](prompts/update-theme.md).
+
 **Who is this "we" we keep talking about?**
 Claude. It's Claude. There is no "we."
 
