@@ -75,9 +75,16 @@ For four frameworks we actually bothered to build for — **CSS**,
 **Tkinter**, **Flet**, and **Angular** (yes, that includes Angular apps
 wrapped in Electron/Tauri as a desktop app) — there are real,
 install-the-normal-way packages, deterministically built from
-`themes/THEMES.md`, no AI required at the point you use them:
-[`packages/css`](packages/css), [`packages/tkinter`](packages/tkinter),
-[`packages/flet`](packages/flet), [`packages/angular`](packages/angular).
+`themes/THEMES.md`, no AI required at the point you use them. Source lives
+at [`packages/css`](packages/css), [`packages/tkinter`](packages/tkinter),
+[`packages/flet`](packages/flet), [`packages/angular`](packages/angular);
+packaged, downloadable zips for each are published in
+[`releases/v0.1.0`](releases/v0.1.0):
+
+- [visual-assault-css-v0.1.0.zip](releases/v0.1.0/visual-assault-css-v0.1.0.zip)
+- [visual-assault-tkinter-v0.1.0.zip](releases/v0.1.0/visual-assault-tkinter-v0.1.0.zip)
+- [visual-assault-flet-v0.1.0.zip](releases/v0.1.0/visual-assault-flet-v0.1.0.zip)
+- [visual-assault-angular-v0.1.0.zip](releases/v0.1.0/visual-assault-angular-v0.1.0.zip)
 
 For anything else, it's still the vibe install up top.
 
