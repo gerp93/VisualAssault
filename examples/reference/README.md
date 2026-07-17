@@ -10,6 +10,12 @@ of it is guaranteed to match the current theme values in
 `themes/THEMES.md`.** `themes/THEMES.md` is the only source of truth. If
 anything here ever disagrees with it, THEMES.md wins.
 
+For CSS and Tkinter specifically, there are now real, currently-maintained
+equivalents: [`packages/css`](../../packages/css) and
+[`packages/tkinter`](../../packages/tkinter), built deterministically from
+`themes/THEMES.md` by `scripts/generate_packages.py`. Those are
+authoritative; this folder is not — don't confuse the two.
+
 Do not:
 - Copy these files wholesale into your app expecting them to be current.
 - Run `generators/generate_css.py` or `generators/generate_tkinter.py` as

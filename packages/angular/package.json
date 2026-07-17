@@ -1,0 +1,19 @@
+{
+  "name": "visual-assault-angular",
+  "version": "0.1.0",
+  "description": "Loud, deliberately eye-searing themes for Angular apps (including ones packaged with Electron/Tauri as a desktop app). Generated from themes/THEMES.md.",
+  "main": "themes.scss",
+  "style": "themes.scss",
+  "types": "theme-names.ts",
+  "files": [
+    "themes.scss",
+    "theme-names.ts",
+    "README.md"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gerp93/VisualAssault"
+  },
+  "keywords": ["theme", "angular", "scss", "css-custom-properties"]
+}
