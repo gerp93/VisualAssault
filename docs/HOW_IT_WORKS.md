@@ -56,9 +56,10 @@ To regenerate the packages after editing `themes/THEMES.md`:
 python scripts/generate_packages.py
 ```
 
-All four packages currently share one version number (`0.1.0`), bumped
-together whenever `themes/THEMES.md` changes and the packages are
-regenerated. **These packages are built and locally verifiable, but not
+All four packages currently share one version number (`0.2.0` as of the
+`surface`/`border`/`textMuted`/`accentMuted` tokens), bumped together
+whenever `themes/THEMES.md` changes and the packages are regenerated —
+minor bump for additive token changes, following normal semver. **These packages are built and locally verifiable, but not
 published to npm/PyPI as part of this repo** — publishing means owning
 registry accounts/tokens and making them installable by strangers, a
 separate, deliberate decision, not a side effect of generating the files.

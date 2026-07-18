@@ -25,7 +25,7 @@ Each theme is a dict keyed by a snake_case id (e.g. `"blue_oval"`,
 `"retrowave"`) with hex color values: `name`, `background`,
 `backgroundHover`, `foreground`, `topBarBackground`, `topBarHover`,
 `buttonBackground`, `buttonHover`, `accentGreen`, `accentRed`,
-`accentBlue`.
+`accentBlue`, `surface`, `border`, `textMuted`, `accentMuted`.
 
 See [`themes/THEMES.md`](../../themes/THEMES.md) for the full list of
 themes and what each token means.

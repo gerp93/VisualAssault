@@ -19,7 +19,8 @@ custom properties: `--color-top-bar-bg`, `--color-top-bar-hover`,
 `--color-text`, `--color-bg`, `--color-bg-hover`, `--color-primary-action`,
 `--color-primary-action-hover`, `--color-primary-action-text` (only present
 when a theme overrides it), `--color-accent-green`, `--color-accent-red`,
-`--color-accent-blue`. Wire your own CSS to them:
+`--color-accent-blue`, `--color-surface`, `--color-border`,
+`--color-text-muted`, `--color-accent-muted`. Wire your own CSS to them:
 
 ```css
 body {

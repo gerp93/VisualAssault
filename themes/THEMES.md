@@ -57,6 +57,10 @@ trivially convertible to hex or any other format a target framework needs.
 | `accentGreen` | Success/positive states |
 | `accentRed` | Error/danger states |
 | `accentBlue` | Informational/link states |
+| `surface` | Background for elevated panels/cards — distinct from the main page `bg` and from `bgHover` (which is a hover-state color, not a resting elevated surface) |
+| `border` | Dividing lines, card outlines, input borders |
+| `textMuted` | Secondary/de-emphasized text — labels, captions, timestamps, helper copy |
+| `accentMuted` | Soft highlight background — active nav item, selected row, badge fill, "you are here" states |
 
 ## Themes
 
@@ -76,6 +80,10 @@ primaryActionText:    null
 accentGreen:          rgb(200, 210, 220)
 accentRed:            rgb(255, 150, 150)
 accentBlue:           rgb(150, 200, 255)
+surface:              rgb(42, 93, 172)
+border:               rgb(86, 126, 189)
+textMuted:            rgb(170, 191, 222)
+accentMuted:          rgb(68, 123, 199)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -95,6 +103,10 @@ primaryActionText:    null
 accentGreen:          rgb(255, 255, 0)
 accentRed:            rgb(204, 0, 102)
 accentBlue:           rgb(135, 206, 235)
+surface:              rgb(255, 123, 189)
+border:               rgb(255, 150, 202)
+textMuted:            rgb(255, 225, 240)
+accentMuted:          rgb(207, 145, 202)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -114,6 +126,10 @@ primaryActionText:    null
 accentGreen:          rgb(85, 255, 85)
 accentRed:            rgb(170, 0, 170)
 accentBlue:           rgb(85, 255, 255)
+surface:              rgb(31, 31, 160)
+border:               rgb(76, 76, 144)
+textMuted:            rgb(166, 166, 115)
+accentMuted:          rgb(34, 102, 204)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -133,6 +149,10 @@ primaryActionText:    null
 accentGreen:          rgb(136, 170, 0)
 accentRed:            rgb(255, 0, 170)
 accentBlue:           rgb(0, 102, 255)
+surface:              rgb(181, 226, 1)
+border:               rgb(146, 182, 3)
+textMuted:            rgb(78, 96, 6)
+accentMuted:          rgb(71, 156, 166)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -152,6 +172,10 @@ primaryActionText:    null
 accentGreen:          rgb(0, 100, 0)
 accentRed:            rgb(195, 46, 11)
 accentBlue:           rgb(100, 60, 20)
+surface:              rgb(224, 166, 108)
+border:               rgb(178, 132, 86)
+textMuted:            rgb(89, 66, 43)
+accentMuted:          rgb(231, 132, 78)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -171,6 +195,10 @@ primaryActionText:    null
 accentGreen:          rgb(255, 230, 180)
 accentRed:            rgb(255, 255, 255)
 accentBlue:           rgb(255, 189, 123)
+surface:              rgb(202, 71, 40)
+border:               rgb(213, 109, 84)
+textMuted:            rgb(235, 186, 174)
+accentMuted:          rgb(219, 103, 56)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -190,6 +218,10 @@ primaryActionText:    null
 accentGreen:          rgb(255, 222, 0)
 accentRed:            rgb(255, 180, 0)
 accentBlue:           rgb(200, 255, 150)
+surface:              rgb(78, 136, 38)
+border:               rgb(114, 153, 30)
+textMuted:            rgb(225, 207, 6)
+accentMuted:          rgb(134, 163, 26)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -209,6 +241,10 @@ primaryActionText:    null
 accentGreen:          rgb(0, 255, 65)
 accentRed:            rgb(255, 191, 0)
 accentBlue:           rgb(50, 205, 50)
+surface:              rgb(11, 42, 11)
+border:               rgb(9, 86, 9)
+textMuted:            rgb(5, 170, 5)
+accentMuted:          rgb(8, 110, 34)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -228,6 +264,10 @@ primaryActionText:    null
 accentGreen:          rgb(255, 205, 0)
 accentRed:            rgb(255, 150, 0)
 accentBlue:           rgb(255, 230, 100)
+surface:              rgb(46, 37, 0)
+border:               rgb(76, 62, 0)
+textMuted:            rgb(166, 133, 0)
+accentMuted:          rgb(102, 82, 0)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -247,6 +287,10 @@ primaryActionText:    null
 accentGreen:          rgb(255, 204, 0)
 accentRed:            rgb(255, 51, 0)
 accentBlue:           rgb(255, 102, 0)
+surface:              rgb(210, 31, 31)
+border:               rgb(219, 76, 76)
+textMuted:            rgb(239, 176, 176)
+accentMuted:          rgb(235, 31, 0)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -266,6 +310,10 @@ primaryActionText:    null
 accentGreen:          rgb(255, 255, 255)
 accentRed:            rgb(191, 10, 48)
 accentBlue:           rgb(100, 180, 255)
+surface:              rgb(31, 66, 122)
+border:               rgb(76, 104, 149)
+textMuted:            rgb(166, 180, 202)
+accentMuted:          rgb(40, 96, 164)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -285,6 +333,10 @@ primaryActionText:    null
 accentGreen:          rgb(57, 255, 20)
 accentRed:            rgb(255, 20, 147)
 accentBlue:           rgb(125, 249, 255)
+surface:              rgb(9, 39, 39)
+border:               rgb(7, 84, 84)
+textMuted:            rgb(4, 169, 169)
+accentMuted:          rgb(29, 108, 14)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -304,6 +356,10 @@ primaryActionText:    null
 accentGreen:          rgb(255, 220, 100)
 accentRed:            rgb(255, 255, 255)
 accentBlue:           rgb(255, 180, 180)
+surface:              rgb(205, 41, 73)
+border:               rgb(215, 85, 110)
+textMuted:            rgb(236, 175, 187)
+accentMuted:          rgb(221, 95, 69)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
 
@@ -323,5 +379,9 @@ primaryActionText:    null
 accentGreen:          rgb(255, 217, 61)
 accentRed:            rgb(224, 64, 251)
 accentBlue:           rgb(199, 125, 255)
+surface:              rgb(53, 22, 59)
+border:               rgb(95, 39, 79)
+textMuted:            rgb(175, 73, 118)
+accentMuted:          rgb(105, 32, 128)
 ```
 inspiration: card-judge theme set · author: Grantford Barnes · createdAt: 2026-04-16
