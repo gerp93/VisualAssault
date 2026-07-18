@@ -16,6 +16,7 @@ TOKEN_KEYS = [
     "topBarBg", "topBarHover", "text", "bg", "bgHover",
     "primaryAction", "primaryActionHover", "primaryActionText",
     "accentGreen", "accentRed", "accentBlue",
+    "surface", "border", "textMuted", "accentMuted",
 ]
 
 
@@ -95,6 +96,10 @@ def emit_css(themes: list[dict], out_dir: Path) -> None:
         lines.append(f"    --color-accent-green: {c['accentGreen']};")
         lines.append(f"    --color-accent-red: {c['accentRed']};")
         lines.append(f"    --color-accent-blue: {c['accentBlue']};")
+        lines.append(f"    --color-surface: {c['surface']};")
+        lines.append(f"    --color-border: {c['border']};")
+        lines.append(f"    --color-text-muted: {c['textMuted']};")
+        lines.append(f"    --color-accent-muted: {c['accentMuted']};")
         lines.append("}")
         lines.append("")
 
@@ -125,6 +130,10 @@ def emit_tkinter(themes: list[dict], out_dir: Path) -> None:
         lines.append(f'        "accentGreen": {rgb_to_hex(c["accentGreen"])!r},')
         lines.append(f'        "accentRed": {rgb_to_hex(c["accentRed"])!r},')
         lines.append(f'        "accentBlue": {rgb_to_hex(c["accentBlue"])!r},')
+        lines.append(f'        "surface": {rgb_to_hex(c["surface"])!r},')
+        lines.append(f'        "border": {rgb_to_hex(c["border"])!r},')
+        lines.append(f'        "textMuted": {rgb_to_hex(c["textMuted"])!r},')
+        lines.append(f'        "accentMuted": {rgb_to_hex(c["accentMuted"])!r},')
         lines.append("    },")
     lines.append("}")
     lines.append("")
@@ -169,6 +178,10 @@ def emit_flet(themes: list[dict], out_dir: Path) -> None:
         lines.append(f'        "accentGreen": {rgb_to_hex(c["accentGreen"])!r},')
         lines.append(f'        "accentRed": {rgb_to_hex(c["accentRed"])!r},')
         lines.append(f'        "accentBlue": {rgb_to_hex(c["accentBlue"])!r},')
+        lines.append(f'        "surface": {rgb_to_hex(c["surface"])!r},')
+        lines.append(f'        "border": {rgb_to_hex(c["border"])!r},')
+        lines.append(f'        "textMuted": {rgb_to_hex(c["textMuted"])!r},')
+        lines.append(f'        "accentMuted": {rgb_to_hex(c["accentMuted"])!r},')
         lines.append("    },")
     lines.append("}")
     lines.append("")
@@ -204,6 +217,10 @@ def emit_angular(themes: list[dict], out_dir: Path) -> None:
         lines.append(f"  --color-accent-green: {c['accentGreen']};")
         lines.append(f"  --color-accent-red: {c['accentRed']};")
         lines.append(f"  --color-accent-blue: {c['accentBlue']};")
+        lines.append(f"  --color-surface: {c['surface']};")
+        lines.append(f"  --color-border: {c['border']};")
+        lines.append(f"  --color-text-muted: {c['textMuted']};")
+        lines.append(f"  --color-accent-muted: {c['accentMuted']};")
         lines.append("}")
         lines.append("")
 

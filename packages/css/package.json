@@ -1,6 +1,6 @@
 {
   "name": "visual-assault-css",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Loud, deliberately eye-searing CSS themes as custom properties. Generated from themes/THEMES.md.",
   "main": "themes.css",
   "style": "themes.css",

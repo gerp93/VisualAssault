@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "visual-assault-tkinter"
-version = "0.1.0"
+version = "0.2.0"
 description = "Loud, deliberately eye-searing themes for Tkinter/ttk apps. Generated from themes/THEMES.md."
 readme = "README.md"
 license = { text = "MIT" }

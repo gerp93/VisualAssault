@@ -21,8 +21,9 @@ page.theme = ft.Theme(
     color_scheme=ft.ColorScheme(
         primary=theme["primary"],
         background=theme["background"],
-        surface=theme["background"],
+        surface=theme["surface"],
         on_surface=theme["foreground"],
+        outline=theme["border"],
         error=theme["accentRed"],
     )
 )
@@ -36,7 +37,8 @@ it doesn't assume a particular Flet API shape.
 Each theme is a dict keyed by a snake_case id (e.g. `"blue_oval"`,
 `"retrowave"`) with hex color values: `name`, `background`,
 `backgroundHover`, `foreground`, `topBarBackground`, `topBarHover`,
-`primary`, `primaryHover`, `accentGreen`, `accentRed`, `accentBlue`.
+`primary`, `primaryHover`, `accentGreen`, `accentRed`, `accentBlue`,
+`surface`, `border`, `textMuted`, `accentMuted`.
 
 See [`themes/THEMES.md`](../../themes/THEMES.md) for the full list of
 themes and what each token means.

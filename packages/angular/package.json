@@ -1,6 +1,6 @@
 {
   "name": "visual-assault-angular",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Loud, deliberately eye-searing themes for Angular apps (including ones packaged with Electron/Tauri as a desktop app). Generated from themes/THEMES.md.",
   "main": "themes.scss",
   "style": "themes.scss",
