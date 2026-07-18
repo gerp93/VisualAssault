@@ -79,12 +79,14 @@ install-the-normal-way packages, deterministically built from
 at [`packages/css`](packages/css), [`packages/tkinter`](packages/tkinter),
 [`packages/flet`](packages/flet), [`packages/angular`](packages/angular);
 packaged, downloadable zips for each are published in
-[`releases/v0.1.0`](releases/v0.1.0):
+[`releases/v0.2.0`](releases/v0.2.0):
 
-- [visual-assault-css-v0.1.0.zip](releases/v0.1.0/visual-assault-css-v0.1.0.zip)
-- [visual-assault-tkinter-v0.1.0.zip](releases/v0.1.0/visual-assault-tkinter-v0.1.0.zip)
-- [visual-assault-flet-v0.1.0.zip](releases/v0.1.0/visual-assault-flet-v0.1.0.zip)
-- [visual-assault-angular-v0.1.0.zip](releases/v0.1.0/visual-assault-angular-v0.1.0.zip)
+- [visual-assault-css-v0.2.0.zip](releases/v0.2.0/visual-assault-css-v0.2.0.zip)
+- [visual-assault-tkinter-v0.2.0.zip](releases/v0.2.0/visual-assault-tkinter-v0.2.0.zip)
+- [visual-assault-flet-v0.2.0.zip](releases/v0.2.0/visual-assault-flet-v0.2.0.zip)
+- [visual-assault-angular-v0.2.0.zip](releases/v0.2.0/visual-assault-angular-v0.2.0.zip)
+
+Older versions stay around too: [`releases/v0.1.0`](releases/v0.1.0).
 
 For anything else, it's still the vibe install up top.
 
