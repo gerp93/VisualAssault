@@ -20,7 +20,6 @@ theme = THEMES["retrowave"]
 page.theme = ft.Theme(
     color_scheme=ft.ColorScheme(
         primary=theme["primary"],
-        background=theme["background"],
         surface=theme["surface"],
         on_surface=theme["foreground"],
         outline=theme["border"],
@@ -32,7 +31,12 @@ page.bgcolor = theme["background"]
 
 Adjust the exact `ft.ColorScheme` fields you populate to whatever your Flet
 version and app actually use — the dict just gives you the hex values,
-it doesn't assume a particular Flet API shape.
+it doesn't assume a particular Flet API shape. In particular, **`background`
+is not a valid `ft.ColorScheme` field on flet 0.86.x** (Material 3 dropped
+the background/on_background pair in favor of the surface-based scheme
+above) — confirmed against KVGenius's actual installed version. Set
+`page.bgcolor` directly instead, as shown, rather than passing `background`
+into `ColorScheme`.
 
 Each theme is a dict keyed by a snake_case id (e.g. `"blue_oval"`,
 `"retrowave"`) with hex color values: `name`, `background`,
