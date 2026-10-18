@@ -39,14 +39,14 @@ solve different problems:
   a conversation), nothing mechanically checks that it did. Treat its
   output as reviewable, not guaranteed.
 - **Real packages** (`packages/css`, `packages/tkinter`, `packages/flet`,
-  `packages/angular`) exist for the frameworks worth owning outright: no AI
+  `packages/angular`, `packages/avalonia`) exist for the frameworks worth owning outright: no AI
   call happens at consumption time at all. `scripts/generate_packages.py`
   deterministically parses `themes/THEMES.md` and writes each package's
   artifacts — same input always produces byte-identical output. That's the
   actual reproducibility guarantee the AI-applied path can't offer, in
-  exchange for only covering four specific frameworks instead of "any."
+  exchange for only covering five specific frameworks instead of "any."
 
-All four packages, plus the AI-applied path, trace back to the same single
+All five packages, plus the AI-applied path, trace back to the same single
 source of truth — `themes/THEMES.md`. Nothing about a theme's actual color
 values is defined twice.
 
@@ -56,7 +56,8 @@ To regenerate the packages after editing `themes/THEMES.md`:
 python scripts/generate_packages.py
 ```
 
-All four packages currently share one version number (`0.2.0` as of the
+All five packages currently share one version number (`0.3.0` as of the
+new Avalonia package; `0.2.0` added the
 `surface`/`border`/`textMuted`/`accentMuted` tokens), bumped together
 whenever `themes/THEMES.md` changes and the packages are regenerated —
 minor bump for additive token changes, following normal semver. **These packages are built and locally verifiable, but not

@@ -241,6 +241,473 @@ def emit_angular(themes: list[dict], out_dir: Path) -> None:
     (out_dir / "theme-names.ts").write_text("\n".join(ts_lines))
 
 
+# Avalonia (C#) token names, in TOKEN_KEYS order. VaToken's enum order is
+# the index into each theme's color array, so keep these two lists aligned.
+AVALONIA_TOKENS = [
+    "TopBarBg", "TopBarHover", "Text", "Bg", "BgHover",
+    "PrimaryAction", "PrimaryActionHover", "PrimaryActionText",
+    "AccentGreen", "AccentRed", "AccentBlue",
+    "Surface", "Border", "TextMuted", "AccentMuted",
+]
+
+# Avalonia Fluent resource key -> VisualAssault token. Controls resolve these
+# through {DynamicResource ...}, so an override placed in Application.Resources
+# wins over the FluentTheme's own value. Keys listed in AVALONIA_COLOR_KEYS are
+# emitted as a Color, everything else as a brush: the kind comes from what
+# Fluent itself defines, not from the key's name (SystemAccentColorLight1 is a
+# Color; the Expander keys are Colors too). To theme another control, add its
+# keys here and run packages/avalonia/verify, which fails if a key is missing
+# from Fluent or has the wrong kind.
+AVALONIA_FLUENT_MAP = {
+    # Window / page / base text
+    "SystemRegionColor": "Bg",
+    "SystemRegionBrush": "Bg",
+    "SystemControlPageBackgroundAltHighBrush": "Bg",
+    "SystemControlBackgroundAltHighBrush": "Bg",
+    "SystemControlForegroundBaseHighBrush": "Text",
+    "SystemControlForegroundBaseMediumHighBrush": "Text",
+    "SystemControlForegroundBaseMediumBrush": "TextMuted",
+    "SystemControlForegroundBaseMediumLowBrush": "TextMuted",
+    "SystemControlForegroundBaseLowBrush": "Border",
+    "SystemControlPageTextBaseHighBrush": "Text",
+    "SystemControlBackgroundChromeMediumBrush": "Surface",
+    "SystemControlBackgroundChromeMediumLowBrush": "Surface",
+    "SystemControlBackgroundBaseLowBrush": "Surface",
+    "SystemControlTransientBackgroundBrush": "Surface",
+    "SystemControlTransientBorderBrush": "Border",
+    "SystemControlBackgroundListLowBrush": "BgHover",
+    "SystemControlBackgroundListMediumBrush": "AccentMuted",
+    "SystemControlHighlightListLowBrush": "BgHover",
+    "SystemControlHighlightListMediumBrush": "AccentMuted",
+    "SystemControlHighlightListAccentLowBrush": "AccentMuted",
+    "SystemControlHighlightListAccentMediumBrush": "AccentMuted",
+    "SystemControlHighlightListAccentHighBrush": "AccentMuted",
+    "SystemControlHighlightAccentBrush": "PrimaryAction",
+    "SystemControlBackgroundAccentBrush": "PrimaryAction",
+    "SystemControlForegroundAccentBrush": "AccentBlue",
+    "SystemControlHyperlinkTextBrush": "AccentBlue",
+    "SystemControlFocusVisualPrimaryBrush": "AccentBlue",
+    "SystemControlFocusVisualSecondaryBrush": "Bg",
+    "SystemControlErrorTextForegroundBrush": "AccentRed",
+    "SystemAccentColor": "PrimaryAction",
+    "SystemAccentColorLight1": "PrimaryAction",
+    "SystemAccentColorLight2": "PrimaryAction",
+    "SystemAccentColorLight3": "PrimaryAction",
+    "SystemAccentColorDark1": "PrimaryActionHover",
+    "SystemAccentColorDark2": "PrimaryActionHover",
+    "SystemAccentColorDark3": "PrimaryActionHover",
+
+    # Button
+    "ButtonBackground": "Surface",
+    "ButtonBackgroundPointerOver": "BgHover",
+    "ButtonBackgroundPressed": "AccentMuted",
+    "ButtonBorderBrush": "Border",
+    "ButtonBorderBrushPointerOver": "Border",
+    "ButtonBorderBrushPressed": "Border",
+    "ButtonForeground": "Text",
+    "ButtonForegroundPointerOver": "Text",
+    "ButtonForegroundPressed": "Text",
+    "ButtonForegroundDisabled": "TextMuted",
+    # Accent (primary action) button: <Button Classes="accent">
+    "AccentButtonBackground": "PrimaryAction",
+    "AccentButtonBackgroundPointerOver": "PrimaryActionHover",
+    "AccentButtonBackgroundPressed": "PrimaryActionHover",
+    "AccentButtonBorderBrush": "PrimaryAction",
+    "AccentButtonBorderBrushPointerOver": "PrimaryActionHover",
+    "AccentButtonBorderBrushPressed": "PrimaryActionHover",
+    "AccentButtonForeground": "PrimaryActionText",
+    "AccentButtonForegroundPointerOver": "PrimaryActionText",
+    "AccentButtonForegroundPressed": "PrimaryActionText",
+    "HyperlinkButtonForeground": "AccentBlue",
+    "HyperlinkButtonForegroundPointerOver": "AccentBlue",
+    "HyperlinkButtonForegroundPressed": "AccentBlue",
+    # ToggleButton
+    "ToggleButtonBackground": "Surface",
+    "ToggleButtonBackgroundPointerOver": "BgHover",
+    "ToggleButtonBackgroundPressed": "AccentMuted",
+    "ToggleButtonBackgroundChecked": "AccentMuted",
+    "ToggleButtonBackgroundCheckedPointerOver": "AccentMuted",
+    "ToggleButtonBackgroundCheckedPressed": "AccentMuted",
+    "ToggleButtonBorderBrush": "Border",
+    "ToggleButtonBorderBrushPointerOver": "Border",
+    "ToggleButtonBorderBrushPressed": "Border",
+    "ToggleButtonBorderBrushChecked": "Border",
+    "ToggleButtonBorderBrushCheckedPointerOver": "Border",
+    "ToggleButtonBorderBrushCheckedPressed": "Border",
+    "ToggleButtonForeground": "Text",
+    "ToggleButtonForegroundPointerOver": "Text",
+    "ToggleButtonForegroundPressed": "Text",
+    "ToggleButtonForegroundChecked": "Text",
+    "ToggleButtonForegroundCheckedPointerOver": "Text",
+    "ToggleButtonForegroundCheckedPressed": "Text",
+
+    # TextBox and friends
+    "TextControlBackground": "Surface",
+    "TextControlBackgroundPointerOver": "Surface",
+    "TextControlBackgroundFocused": "Surface",
+    "TextControlBorderBrush": "Border",
+    "TextControlBorderBrushPointerOver": "Border",
+    "TextControlBorderBrushFocused": "AccentBlue",
+    "TextControlForeground": "Text",
+    "TextControlForegroundPointerOver": "Text",
+    "TextControlForegroundFocused": "Text",
+    "TextControlPlaceholderForeground": "TextMuted",
+    "TextControlPlaceholderForegroundPointerOver": "TextMuted",
+    "TextControlPlaceholderForegroundFocused": "TextMuted",
+
+    # ComboBox
+    "ComboBoxBackground": "Surface",
+    "ComboBoxBackgroundPointerOver": "BgHover",
+    "ComboBoxBackgroundUnfocused": "Surface",
+    "ComboBoxBackgroundBorderBrushFocused": "AccentBlue",
+    "ComboBoxBackgroundBorderBrushUnfocused": "Border",
+    "ComboBoxBorderBrush": "Border",
+    "ComboBoxBorderBrushPointerOver": "Border",
+    "ComboBoxForeground": "Text",
+    "ComboBoxForegroundFocused": "Text",
+    "ComboBoxPlaceHolderForeground": "TextMuted",
+    "ComboBoxDropDownGlyphForeground": "Text",
+    "ComboBoxDropDownGlyphForegroundFocused": "Text",
+    "ComboBoxDropDownBackground": "Surface",
+    "ComboBoxDropDownBorderBrush": "Border",
+    "ComboBoxItemBackground": "Surface",
+    "ComboBoxItemBackgroundPointerOver": "BgHover",
+    "ComboBoxItemBackgroundSelected": "AccentMuted",
+    "ComboBoxItemBackgroundSelectedPointerOver": "AccentMuted",
+    "ComboBoxItemForeground": "Text",
+    "ComboBoxItemForegroundPointerOver": "Text",
+    "ComboBoxItemForegroundSelected": "Text",
+    "ComboBoxItemForegroundSelectedPointerOver": "Text",
+
+    # CheckBox
+    "CheckBoxCheckBackgroundFillUnchecked": "Surface",
+    "CheckBoxCheckBackgroundFillUncheckedPointerOver": "BgHover",
+    "CheckBoxCheckBackgroundFillUncheckedPressed": "AccentMuted",
+    "CheckBoxCheckBackgroundFillChecked": "PrimaryAction",
+    "CheckBoxCheckBackgroundFillCheckedPointerOver": "PrimaryActionHover",
+    "CheckBoxCheckBackgroundFillCheckedPressed": "PrimaryActionHover",
+    "CheckBoxCheckBackgroundFillIndeterminate": "PrimaryAction",
+    "CheckBoxCheckBackgroundFillIndeterminatePointerOver": "PrimaryActionHover",
+    "CheckBoxCheckBackgroundFillIndeterminatePressed": "PrimaryActionHover",
+    "CheckBoxCheckBackgroundStrokeUnchecked": "Border",
+    "CheckBoxCheckBackgroundStrokeUncheckedPointerOver": "Border",
+    "CheckBoxCheckBackgroundStrokeUncheckedPressed": "Border",
+    "CheckBoxCheckBackgroundStrokeCheckedPointerOver": "PrimaryActionHover",
+    "CheckBoxCheckBackgroundStrokeCheckedPressed": "PrimaryActionHover",
+    "CheckBoxCheckGlyphForegroundChecked": "PrimaryActionText",
+    "CheckBoxCheckGlyphForegroundCheckedPointerOver": "PrimaryActionText",
+    "CheckBoxCheckGlyphForegroundCheckedPressed": "PrimaryActionText",
+    "CheckBoxCheckGlyphForegroundIndeterminate": "PrimaryActionText",
+    "CheckBoxForegroundUnchecked": "Text",
+    "CheckBoxForegroundUncheckedPointerOver": "Text",
+    "CheckBoxForegroundUncheckedPressed": "Text",
+    "CheckBoxForegroundChecked": "Text",
+    "CheckBoxForegroundCheckedPointerOver": "Text",
+    "CheckBoxForegroundCheckedPressed": "Text",
+    "CheckBoxForegroundIndeterminate": "Text",
+
+    # RadioButton
+    "RadioButtonOuterEllipseFill": "Surface",
+    "RadioButtonOuterEllipseStroke": "Border",
+    "RadioButtonOuterEllipseCheckedFill": "PrimaryAction",
+    "RadioButtonOuterEllipseCheckedStroke": "PrimaryAction",
+    "RadioButtonCheckGlyphFill": "PrimaryActionText",
+    "RadioButtonForeground": "Text",
+    "RadioButtonForegroundPointerOver": "Text",
+    "RadioButtonForegroundPressed": "Text",
+
+    # ToggleSwitch
+    "ToggleSwitchFillOff": "Surface",
+    "ToggleSwitchStrokeOff": "Border",
+    "ToggleSwitchKnobFillOff": "Text",
+    "ToggleSwitchFillOn": "PrimaryAction",
+    "ToggleSwitchStrokeOn": "PrimaryAction",
+    "ToggleSwitchKnobFillOn": "PrimaryActionText",
+    "ToggleSwitchContentForeground": "Text",
+
+    # Slider
+    "SliderTrackFill": "Border",
+    "SliderTrackValueFill": "PrimaryAction",
+    "SliderTrackValueFillPointerOver": "PrimaryActionHover",
+    "SliderTrackValueFillPressed": "PrimaryActionHover",
+    "SliderThumbBackground": "PrimaryAction",
+    "SliderThumbBackgroundPointerOver": "PrimaryActionHover",
+    "SliderThumbBackgroundPressed": "PrimaryActionHover",
+
+    # ScrollBar
+    "ScrollBarBackground": "Surface",
+    "ScrollBarBackgroundPointerOver": "Surface",
+    "ScrollBarBorderBrush": "Border",
+    "ScrollBarTrackFill": "Surface",
+    "ScrollBarTrackFillPointerOver": "Surface",
+    "ScrollBarTrackStroke": "Border",
+    "ScrollBarTrackStrokePointerOver": "Border",
+    "ScrollBarThumbBackgroundColor": "TextMuted",
+    "ScrollBarThumbFillPointerOver": "Text",
+    "ScrollBarThumbFillPressed": "Text",
+    "ScrollBarButtonArrowForeground": "TextMuted",
+    "ScrollBarButtonArrowForegroundPointerOver": "Text",
+    "ScrollBarButtonArrowForegroundPressed": "Text",
+
+    # Tabs
+    "TabControlBackground": "Bg",
+    "TabItemHeaderBackgroundSelected": "Surface",
+    "TabItemHeaderBackgroundSelectedPointerOver": "Surface",
+    "TabItemHeaderBackgroundSelectedPressed": "Surface",
+    "TabItemHeaderBackgroundUnselected": "Bg",
+    "TabItemHeaderBackgroundUnselectedPointerOver": "BgHover",
+    "TabItemHeaderBackgroundUnselectedPressed": "AccentMuted",
+    "TabItemHeaderForegroundSelected": "Text",
+    "TabItemHeaderForegroundSelectedPointerOver": "Text",
+    "TabItemHeaderForegroundSelectedPressed": "Text",
+    "TabItemHeaderForegroundUnselected": "TextMuted",
+    "TabItemHeaderForegroundUnselectedPointerOver": "Text",
+    "TabItemHeaderForegroundUnselectedPressed": "Text",
+    "TabItemHeaderSelectedPipeFill": "PrimaryAction",
+
+    # Tooltip, flyouts, menus
+    "ToolTipBackground": "Surface",
+    "ToolTipBorderBrush": "Border",
+    "ToolTipForeground": "Text",
+    "FlyoutPresenterBackground": "Surface",
+    "FlyoutBorderThemeBrush": "Border",
+    "MenuFlyoutPresenterBackground": "Surface",
+    "MenuFlyoutPresenterBorderBrush": "Border",
+    "MenuFlyoutItemBackground": "Surface",
+    "MenuFlyoutItemBackgroundPointerOver": "BgHover",
+    "MenuFlyoutItemBackgroundPressed": "AccentMuted",
+    "MenuFlyoutItemForeground": "Text",
+    "MenuFlyoutItemForegroundPointerOver": "Text",
+    "MenuFlyoutItemForegroundPressed": "Text",
+    "MenuFlyoutItemKeyboardAcceleratorTextForeground": "TextMuted",
+    "MenuFlyoutItemKeyboardAcceleratorTextForegroundPointerOver": "TextMuted",
+    "MenuFlyoutItemKeyboardAcceleratorTextForegroundPressed": "TextMuted",
+
+    # TreeView
+    "TreeViewItemForeground": "Text",
+    "TreeViewItemForegroundPointerOver": "Text",
+    "TreeViewItemForegroundSelected": "Text",
+    "TreeViewItemBackgroundPointerOver": "BgHover",
+    "TreeViewItemBackgroundSelected": "AccentMuted",
+    "TreeViewItemBackgroundSelectedPointerOver": "AccentMuted",
+}
+
+
+AVALONIA_COLOR_KEYS = {
+    "SystemRegionColor",
+    "SystemAccentColor", "SystemAccentColorLight1", "SystemAccentColorLight2",
+    "SystemAccentColorLight3", "SystemAccentColorDark1", "SystemAccentColorDark2",
+    "SystemAccentColorDark3",
+    "ScrollBarThumbBackgroundColor",
+}
+
+
+def cs_str(value: str) -> str:
+    return '"' + value.replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
+def cs_color(value: str) -> str:
+    r, g, b = (int(n) for n in re.findall(r"\d+", value))
+    return f"Color.FromRgb({r}, {g}, {b})"
+
+
+def emit_avalonia(themes: list[dict], out_dir: Path) -> None:
+    pkg_dir = out_dir / "VisualAssault"
+    pkg_dir.mkdir(parents=True, exist_ok=True)
+    header = "// <auto-generated> Generated by scripts/generate_packages.py from themes/THEMES.md. Do not edit by hand."
+
+    lines = [
+        header,
+        "#nullable enable",
+        "using System;",
+        "using System.Collections.Generic;",
+        "using Avalonia.Media;",
+        "",
+        "namespace VisualAssault;",
+        "",
+        "/// <summary>The 15 VisualAssault color tokens; the value is the index into a theme's colors.</summary>",
+        "public enum VaToken",
+        "{",
+    ]
+    for name in AVALONIA_TOKENS:
+        lines.append(f"    {name},")
+    lines += [
+        "}",
+        "",
+        "public sealed class VaTheme",
+        "{",
+        "    private readonly Color[] _colors;",
+        "",
+        "    public VaTheme(string id, string name, string description, Color[] colors)",
+        "    {",
+        f"        if (colors.Length != {len(AVALONIA_TOKENS)}) throw new ArgumentException(\"A theme needs exactly {len(AVALONIA_TOKENS)} colors.\", nameof(colors));",
+        "        Id = id;",
+        "        Name = name;",
+        "        Description = description;",
+        "        _colors = colors;",
+        "    }",
+        "",
+        "    /// <summary>snake_case id, shared with the Tkinter and Flet packages (e.g. \"blue_oval\").</summary>",
+        "    public string Id { get; }",
+        "    public string Name { get; }",
+        "    public string Description { get; }",
+        "    public Color this[VaToken token] => _colors[(int)token];",
+        "}",
+        "",
+        "public static class VisualAssaultThemes",
+        "{",
+        "    public static IReadOnlyList<VaTheme> All { get; } = new VaTheme[]",
+        "    {",
+    ]
+    for theme in themes:
+        c = theme["colors"]
+        resolved = []
+        for key in TOKEN_KEYS:
+            value = c[key]
+            # primaryActionText: null means "reuse text" (see the token reference).
+            if value == "null":
+                value = c["text"]
+            resolved.append(cs_color(value))
+        lines.append("        new VaTheme(")
+        lines.append(f"            {cs_str(theme['id'].replace('-', '_'))}, {cs_str(theme['name'])}, {cs_str(theme['description'])},")
+        lines.append("            new[]")
+        lines.append("            {")
+        for token, color in zip(AVALONIA_TOKENS, resolved):
+            lines.append(f"                {color}, // {token}")
+        lines.append("            }),")
+    lines += [
+        "    };",
+        "",
+        "    public static VaTheme? Find(string id)",
+        "    {",
+        "        foreach (var theme in All)",
+        "            if (string.Equals(theme.Id, id, StringComparison.OrdinalIgnoreCase)) return theme;",
+        "        return null;",
+        "    }",
+        "}",
+        "",
+    ]
+    (pkg_dir / "Themes.cs").write_text("\n".join(lines))
+
+    map_lines = [
+        header,
+        "#nullable enable",
+        "",
+        "namespace VisualAssault;",
+        "",
+        "/// <summary>Avalonia Fluent resource keys overridden by ThemeManager, and the token each takes.</summary>",
+        "internal static class VaFluentMap",
+        "{",
+        "    public static readonly (string Key, VaToken Token)[] Colors =",
+        "    {",
+    ]
+    brushes = []
+    for key, token in AVALONIA_FLUENT_MAP.items():
+        if token not in AVALONIA_TOKENS:
+            raise ValueError(f"Unknown token {token!r} for {key!r}")
+        if key in AVALONIA_COLOR_KEYS:
+            map_lines.append(f"        ({cs_str(key)}, VaToken.{token}),")
+        else:
+            brushes.append((key, token))
+    map_lines += [
+        "    };",
+        "",
+        "    public static readonly (string Key, VaToken Token)[] Brushes =",
+        "    {",
+    ]
+    for key, token in brushes:
+        map_lines.append(f"        ({cs_str(key)}, VaToken.{token}),")
+    map_lines += ["    };", "}", ""]
+    (pkg_dir / "FluentMapping.cs").write_text("\n".join(map_lines))
+
+    # ThemeManager.cs is hand-maintained (like the other packages' __init__.py):
+    # written once, never overwritten, so local logic changes survive regeneration.
+    manager_path = pkg_dir / "ThemeManager.cs"
+    if not manager_path.exists():
+        manager_path.write_text(AVALONIA_THEME_MANAGER)
+
+
+AVALONIA_THEME_MANAGER = """#nullable enable
+using System;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Media;
+using Avalonia.Styling;
+
+namespace VisualAssault;
+
+/// <summary>
+/// Applies a VisualAssault theme to the running application, and can switch
+/// themes live. Resources are published two ways:
+/// <list type="bullet">
+/// <item>Va&lt;Token&gt;Color / Va&lt;Token&gt;Brush (e.g. VaBgBrush) for your own XAML, via DynamicResource.</item>
+/// <item>Overrides of Avalonia's Fluent resource keys, so stock controls pick the theme up unstyled.</item>
+/// </list>
+/// </summary>
+public static class ThemeManager
+{
+    private static ResourceDictionary? s_applied;
+
+    public static VaTheme? Current { get; private set; }
+
+    public static event EventHandler<VaTheme>? ThemeChanged;
+
+    public static void Apply(string id) =>
+        Apply(VisualAssaultThemes.Find(id) ?? throw new ArgumentException($"Unknown VisualAssault theme '{id}'.", nameof(id)));
+
+    public static void Apply(VaTheme theme)
+    {
+        var app = Application.Current
+            ?? throw new InvalidOperationException("ThemeManager.Apply needs a running Application; call it after Avalonia has initialized.");
+
+        var dictionary = Build(theme);
+        if (s_applied is not null) app.Resources.MergedDictionaries.Remove(s_applied);
+        app.Resources.MergedDictionaries.Add(dictionary);
+        s_applied = dictionary;
+
+        // Controls this package does not map still get legible Fluent defaults.
+        app.RequestedThemeVariant = IsDark(theme[VaToken.Bg]) ? ThemeVariant.Dark : ThemeVariant.Light;
+
+        Current = theme;
+        ThemeChanged?.Invoke(null, theme);
+    }
+
+    // Mutable SolidColorBrush on purpose: some Fluent templates bind properties
+    // typed SolidColorBrush, which reject an ImmutableSolidColorBrush.
+    private static ResourceDictionary Build(VaTheme theme)
+    {
+        var dictionary = new ResourceDictionary();
+
+        foreach (VaToken token in Enum.GetValues(typeof(VaToken)))
+        {
+            var color = theme[token];
+            dictionary[\"Va\" + token + \"Color\"] = color;
+            dictionary[\"Va\" + token + \"Brush\"] = new SolidColorBrush(color);
+        }
+
+        foreach (var (key, token) in VaFluentMap.Colors)
+            dictionary[key] = theme[token];
+        foreach (var (key, token) in VaFluentMap.Brushes)
+            dictionary[key] = new SolidColorBrush(theme[token]);
+
+        return dictionary;
+    }
+
+    /// <summary>WCAG relative luminance below 0.5 counts as a dark background.</summary>
+    internal static bool IsDark(Color color)
+    {
+        static double Channel(byte value)
+        {
+            var v = value / 255.0;
+            return v <= 0.03928 ? v / 12.92 : Math.Pow((v + 0.055) / 1.055, 2.4);
+        }
+
+        return 0.2126 * Channel(color.R) + 0.7152 * Channel(color.G) + 0.0722 * Channel(color.B) < 0.5;
+    }
+}
+"""
+
+
 def main() -> None:
     themes = parse_themes(THEMES_MD)
 
@@ -248,15 +715,17 @@ def main() -> None:
     tkinter_dir = PACKAGES_DIR / "tkinter"
     flet_dir = PACKAGES_DIR / "flet"
     angular_dir = PACKAGES_DIR / "angular"
-    for d in (css_dir, tkinter_dir, flet_dir, angular_dir):
+    avalonia_dir = PACKAGES_DIR / "avalonia"
+    for d in (css_dir, tkinter_dir, flet_dir, angular_dir, avalonia_dir):
         d.mkdir(parents=True, exist_ok=True)
 
     emit_css(themes, css_dir)
     emit_tkinter(themes, tkinter_dir)
     emit_flet(themes, flet_dir)
     emit_angular(themes, angular_dir)
+    emit_avalonia(themes, avalonia_dir)
 
-    print(f"Generated {len(themes)} themes into packages/{{css,tkinter,flet,angular}}")
+    print(f"Generated {len(themes)} themes into packages/{{css,tkinter,flet,angular,avalonia}}")
 
 
 if __name__ == "__main__":
