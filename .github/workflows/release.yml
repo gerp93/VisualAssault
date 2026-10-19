@@ -1,0 +1,100 @@
+# Reusable release job for VisualAssault. Called by auto-release.yml (every
+# push to main) and cut-release.yml (manual, explicit version).
+#
+# VisualAssault is a theme producer, not an app: there is no binary to build,
+# and consumers pin a git tag (see KVG_Standards' themes-versioning.md). So a
+# "release" here is:
+#   1. stamp the version into the package manifests on a tag-only commit
+#      (the commit is not added to main; its parent is the main commit being
+#      released), so a consumer pinning @vX.Y.Z gets manifests that say X.Y.Z;
+#   2. push the annotated tag;
+#   3. build one zip per package and publish them on the GitHub Release.
+
+name: Release
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: 'Tag to create, e.g. v0.3.0'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check the tag is new and well-formed
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -e
+          [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Invalid tag: $VERSION" >&2; exit 1; }
+          if git rev-parse -q --verify "refs/tags/$VERSION" >/dev/null; then
+            echo "Tag $VERSION already exists." >&2
+            exit 1
+          fi
+
+      - name: Regenerate packages and fail if they drifted from THEMES.md
+        run: |
+          set -e
+          python3 scripts/generate_packages.py
+          git diff --exit-code -- packages
+
+      - name: Stamp the version into the package manifests
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -e
+          V="${VERSION#v}"
+          sed -i -E "0,/\"version\": \"[^\"]*\"/s//\"version\": \"$V\"/" packages/css/package.json packages/angular/package.json
+          sed -i -E "0,/^version = \"[^\"]*\"/s//version = \"$V\"/" packages/tkinter/pyproject.toml packages/flet/pyproject.toml
+          grep -H -E '"version"|^version' packages/css/package.json packages/angular/package.json packages/tkinter/pyproject.toml packages/flet/pyproject.toml
+
+      - name: Commit the stamp and push the tag (tag only, main is untouched)
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages
+          git diff --cached --quiet || git commit -m "Release $VERSION"
+          git tag -a "$VERSION" -m "$VERSION"
+          git push origin "refs/tags/$VERSION"
+
+      - name: Build one zip per package
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -e
+          mkdir dist
+          cd packages
+          for pkg in css tkinter flet angular avalonia; do
+            zip -r -q "../dist/visual-assault-$pkg-$VERSION.zip" "$pkg" \
+              -x '*/__pycache__/*' -x '*.pyc' -x "$pkg/verify/*" -x "$pkg/bin/*" -x "$pkg/obj/*"
+          done
+          ls -l ../dist
+
+      - name: Publish the GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.version }}
+          files: dist/*.zip
+          generate_release_notes: true
+          body: |
+            ## Installing
+
+            Pin this tag (`${{ inputs.version }}`), never `main`. Either point your
+            package manager at the tag, for example
+            `visual-assault-tkinter @ git+https://github.com/gerp93/VisualAssault.git@${{ inputs.version }}#subdirectory=packages/tkinter`,
+            or download the zip for your framework below. Avalonia apps copy the
+            three files in `avalonia/VisualAssault/` into the app. See
+            [KVG_Standards' theme versioning](https://github.com/gerp93/KVG_Standards/blob/main/themes-versioning.md).

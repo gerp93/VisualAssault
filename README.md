@@ -79,17 +79,12 @@ apps) — there are real packages, deterministically built from
 at [`packages/css`](packages/css), [`packages/tkinter`](packages/tkinter),
 [`packages/flet`](packages/flet), [`packages/angular`](packages/angular),
 and [`packages/avalonia`](packages/avalonia) (plain source files you copy in,
-not a NuGet package); packaged, downloadable zips for each are published in
-[`releases/v0.3.0`](releases/v0.3.0):
-
-- [visual-assault-css-v0.3.0.zip](releases/v0.3.0/visual-assault-css-v0.3.0.zip)
-- [visual-assault-tkinter-v0.3.0.zip](releases/v0.3.0/visual-assault-tkinter-v0.3.0.zip)
-- [visual-assault-flet-v0.3.0.zip](releases/v0.3.0/visual-assault-flet-v0.3.0.zip)
-- [visual-assault-angular-v0.3.0.zip](releases/v0.3.0/visual-assault-angular-v0.3.0.zip)
-- [visual-assault-avalonia-v0.3.0.zip](releases/v0.3.0/visual-assault-avalonia-v0.3.0.zip)
-
-Older versions stay around too: [`releases/v0.2.0`](releases/v0.2.0),
-[`releases/v0.1.0`](releases/v0.1.0).
+not a NuGet package). Every push to `main` cuts a tagged
+[GitHub Release](https://github.com/gerp93/VisualAssault/releases) with one
+downloadable zip per package (`visual-assault-<framework>-vX.Y.Z.zip`).
+**Pin a tag, never `main`**: point your package manager at `@vX.Y.Z`, or
+download the zip from that release. The zips under [`releases/`](releases)
+(v0.1.0 to v0.3.0) are the older, hand-published ones.
 
 For anything else, it's still the vibe install up top.
 
@@ -102,3 +97,14 @@ make your app unusable, just deeply unpleasant to look at (in a good way).
 We dont know (or care) how this actually works under the hood. But
 if you want to find out (or force an enslaved GPU to explain it to you), the machines were kind enough to write it all down:
 [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md).
+
+## Releases and standards
+
+This repo follows [KVG_Standards](https://github.com/gerp93/KVG_Standards).
+Releases are automatic: `.github/workflows/auto-release.yml` tags every push to
+`main` (Conventional Commits pick the bump: `feat:` minor, `feat!:` major,
+anything else patch), stamps the version into the package manifests on the
+tag, and publishes the zips. To release a specific number, run the
+**Cut Release** workflow. To force a release with no code change, add a line
+to [`VERSION_BUMP.md`](VERSION_BUMP.md). CI fails if the committed `packages/`
+differ from what `scripts/generate_packages.py` produces.

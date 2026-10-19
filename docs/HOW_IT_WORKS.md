@@ -56,11 +56,11 @@ To regenerate the packages after editing `themes/THEMES.md`:
 python scripts/generate_packages.py
 ```
 
-All five packages currently share one version number (`0.3.0` as of the
-new Avalonia package; `0.2.0` added the
-`surface`/`border`/`textMuted`/`accentMuted` tokens), bumped together
-whenever `themes/THEMES.md` changes and the packages are regenerated —
-minor bump for additive token changes, following normal semver. **These packages are built and locally verifiable, but not
+All five packages share one version number, which is the release tag.
+Auto Release (see the README) stamps it into the manifests when it tags a
+push to `main`, so the version in the files on `main` can lag the latest tag
+(minor bump for additive token changes, following normal semver, via a
+`feat:` commit). **These packages are built and locally verifiable, but not
 published to npm/PyPI as part of this repo** — publishing means owning
 registry accounts/tokens and making them installable by strangers, a
 separate, deliberate decision, not a side effect of generating the files.

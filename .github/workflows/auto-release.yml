@@ -1,0 +1,47 @@
+# Fires a release on every push to main. Conventional Commits decide the
+# bump (feat: minor, feat!: major, anything else patch). Based on
+# KVG_Standards' templates/auto-release.yml; the version job runs the
+# bump action in dry-run mode because release.yml has to create the tag
+# itself, on a commit that has the version stamped into the manifests.
+# cut-release.yml stays available for a deliberately chosen version.
+
+name: Auto Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      new_tag: ${{ steps.tag_version.outputs.new_tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Work out the next version
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_bump: patch
+          release_branches: main
+          dry_run: true
+
+  release:
+    needs: version
+    if: ${{ needs.version.outputs.new_tag != '' }}
+    uses: ./.github/workflows/release.yml
+    with:
+      version: ${{ needs.version.outputs.new_tag }}
+    permissions:
+      contents: write
