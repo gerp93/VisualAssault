@@ -1,0 +1,23 @@
+# Checks that the committed packages are exactly what scripts/generate_packages.py
+# produces from themes/THEMES.md, so a hand edit or a forgotten regenerate fails
+# before it can be released.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  packages-match-themes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate and diff
+        run: |
+          python3 scripts/generate_packages.py
+          git diff --exit-code -- packages
